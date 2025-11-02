@@ -1,6 +1,6 @@
 # Unraid Backup & Recovery Plan
 
-_Last revised:_ 2025-10-31  
+_Last revised:_ 2025-11-01  
 _Server name:_ Gyarados
 
 ---
@@ -41,7 +41,7 @@ _Server name:_ Gyarados
 |------|------------|----------------|-------|
 | **Parity Check (non-correcting)** | Monthly | Unraid Checker | Run before external backup |
 | **External Backup (rsync)** | Monthly | 28TB External Userscript | Rotate drive offsite if possible |
-| **btrfs Scrub (cache pools)** | Monthly | `btrfs scrub start -Bd /mnt/cache_protected` and `/mnt/cache_appdata` | Detects and repairs bitrot |
+| **btrfs Scrub (cache pools)** | Monthly | `/mnt/cache_protected` and `/mnt/cache_appdata` | Detects and repairs bitrot, just click the pool and then "scrub" |
 | **Duplicacy Check** | Monthly | `duplicacy check -a -tabular` | Confirms remote chunks are valid |
 | **File Integrity Verification** | Monthly | Offsite Verify Userscript | Grab random files, checksum them and compare vs. backup |
 | **Recovery Test** | Every 90 days | Manual | Restore 3-5 files from each backup source |
@@ -75,5 +75,6 @@ _Server name:_ Gyarados
 3. Restore data from:
    - External 28TB backup drive (via rsync)
    - Duplicacy or rclone (Backblaze) for critical data if External is damaged
+
 
 
